@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accept Donation</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='acceptDonation.css') }}">
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>Accept Donation</h1>
+            <a class="logout" href="/logout">Logout</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h2>Enter Donation Details</h2>
+        <form action="/saveDonation" method="POST">
+            <div class="form-group">
+                <label for="donorUsername">Donor Username:</label>
+                <input type="text" id="donorUsername" name="donorUsername" placeholder="Enter Donor Username" required>
+            </div>
+
+            <div class="form-group">
+                <label for="iDescription">Item Description:</label>
+                <input type="text" id="iDescription" name="iDescription" placeholder="Describe the item" required>
+            </div>
+
+            <div class="form-group">
+                <label for="photo">Photo URL:</label>
+                <input type="text" id="photo" name="photo" placeholder="http://example.com/item.jpg" required>
+            </div>
+
+            <div class="form-group">
+                <label for="color">Color:</label>
+                <input type="text" id="color" name="color" placeholder="e.g., Yellow" maxlength="30" required>
+            </div>
+
+            <div class="form-group">
+                <label for="isNew">Is New:</label>
+                <select id="isNew" name="isNew" required>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="hasPieces">Has Pieces:</label>
+                <select id="hasPieces" name="hasPieces" required>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="material">Material:</label>
+                <input type="text" id="material" name="material" placeholder="e.g., Wood" required>
+            </div>
+
+            <div class="form-group">
+                <label for="mainCategory">Main Category:</label>
+                <input type="text" id="mainCategory" name="mainCategory" placeholder="e.g., Furniture" required>
+            </div>
+
+            <div class="form-group">
+                <label for="subCategory">Sub Category:</label>
+                <input type="text" id="subCategory" name="subCategory" placeholder="e.g., Sofa" required>
+            </div>
+
+            <div class="form-group">
+                <label for="locations">Locations (Comma-Separated: roomNum, shelfNum, shelfDescription):</label>
+                <textarea id="locations" name="locations" rows="3" placeholder="e.g., 1,1,Top-left shelf" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Register Donation" class="btn">
+            </div>
+        </form>
+
+        {% if error %}
+        <div class="error">
+            {{ error }}
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>

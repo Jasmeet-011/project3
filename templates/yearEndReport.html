@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Year-End Report</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='yearEndReport.css') }}">
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>Year-End Report</h1>
+            <a class="back" href="/home">Go Back</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% else %}
+            <section class="report-section">
+                <h2>Number of Clients Served</h2>
+                <p class="highlight">{{ clients_served }}</p>
+            </section>
+
+            <section class="report-section">
+                <h2>Number of Items Donated by Category</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Main Category</th>
+                            <th>Subcategory</th>
+                            <th>Total Items</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in items_donated %}
+                        <tr>
+                            <td>{{ item.mainCategory }}</td>
+                            <td>{{ item.subCategory }}</td>
+                            <td>{{ item.total_items }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </section>
+
+            <section class="report-section">
+                <h2>Summary of How Clients Were Helped</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Client Username</th>
+                            <th>Total Orders</th>
+                            <th>Total Items Received</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for client in clients_helped_summary %}
+                        <tr>
+                            <td>{{ client.client_username }}</td>
+                            <td>{{ client.total_orders }}</td>
+                            <td>{{ client.total_items_received }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </section>
+        {% endif %}
+    </div>
+</body>
+</html>

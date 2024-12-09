@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Item Locations</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='findSingleItemResult.css') }}">
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>Item Locations</h1>
+            <a class="back" href="/home">Go Back</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h2>Locations for Item ID: {{ itemID }}</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Piece Number</th>
+                    <th>Room Number</th>
+                    <th>Shelf Number</th>
+                    <th>Shelf Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in results %}
+                <tr>
+                    <td>{{ row.pieceNum }}</td>
+                    <td>{{ row.roomNum }}</td>
+                    <td>{{ row.shelfNum }}</td>
+                    <td>{{ row.shelfDescription }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

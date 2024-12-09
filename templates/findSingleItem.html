@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Single Item</title>
+</head>
+<body>
+    <h1>Find Single Item</h1>
+    <form action="/findSingleItemResult" method="POST">
+        <input type="text" name="itemID" placeholder="Enter Item ID" required>
+        <br>
+        <input type="submit" value="Search">
+    </form>
+    {% if error %}
+        <p style="color:red;">{{ error }}</p>
+    {% endif %}
+</body>
+</html>

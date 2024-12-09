@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register as Donor</title>
+</head>
+<body>
+    <h1>Register as a Donor</h1>
+    {% if error %}
+        <p style="color: red; font-weight: bold;">{{ error }}</p>
+    {% endif %}
+    <form action="/registerDonor" method="POST">
+        <label for="donorID">Donor ID:</label>
+        <input type="text" id="donorID" name="donorID" required><br>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required><br>
+        <label for="donorDetails">Details:</label>
+        <textarea id="donorDetails" name="donorDetails" required></textarea><br>
+        <input type="submit" value="Register Donor">
+    </form>
+    
+</body>
+</html>

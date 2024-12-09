@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check Donor Status</title>
+</head>
+<body>
+    <h1>Check Donor ID</h1>
+    <form action="/verifyDonor" method="POST">
+			<label for="donorID">Donor ID:</label>
+			<input type="text" id="donorID" name="donorID" placeholder="Enter Donor ID" required><br><br>
+	
+			<!-- <label for="donorUsername">Donor Username:</label>
+			<input type="text" id="donorUsername" name="donorUsername" placeholder="Enter Donor Username" required><br><br> -->
+	
+			<input type="submit" value="Verify Donor">
+	</form>
+	
+    {% if error %}
+        <p style="color: red; font-weight: bold;">{{ error }}</p>
+    {% endif %}
+</body>
+</html>

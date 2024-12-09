@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Order Status</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='updateOrderStatus.css') }}">
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>Update Order Status</h1>
+            <a class="back" href="/home">Go Back</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+
+        {% if role == 'staff' %}
+            <section>
+                <h2>Orders You Supervise</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Order Date</th>
+                            <th>Order Notes</th>
+                            <th>Status</th>
+                            <th>Update Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for order in supervised_orders %}
+                        <tr>
+                            <td>{{ order.orderID }}</td>
+                            <td>{{ order.orderDate }}</td>
+                            <td>{{ order.orderNotes }}</td>
+                            <td>{{ order.status }}</td>
+                            <td>
+                                <form method="POST" action="/updateOrderStatus">
+                                    <input type="hidden" name="orderID" value="{{ order.orderID }}">
+                                    <select name="status" required>
+                                        <option value="Pending" {% if order.status == 'Pending' %}selected{% endif %}>Pending</option>
+                                        <option value="In Progress" {% if order.status == 'In Progress' %}selected{% endif %}>In Progress</option>
+                                        <option value="Completed" {% if order.status == 'Completed' %}selected{% endif %}>Completed</option>
+                                    </select>
+                                    <button type="submit">Update</button>
+                                </form>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </section>
+        {% endif %}
+
+        {% if role == 'volunteer' %}
+            <section>
+                <h2>Orders You Are Delivering</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Order Date</th>
+                            <th>Order Notes</th>
+                            <th>Status</th>
+                            <th>Update Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for order in delivered_orders %}
+                        <tr>
+                            <td>{{ order.orderID }}</td>
+                            <td>{{ order.orderDate }}</td>
+                            <td>{{ order.orderNotes }}</td>
+                            <td>{{ order.status }}</td>
+                            <td>
+                                <form method="POST" action="/updateOrderStatus">
+                                    <input type="hidden" name="orderID" value="{{ order.orderID }}">
+                                    <select name="status" required>
+                                        <option value="Pending" {% if order.status == 'Pending' %}selected{% endif %}>Pending</option>
+                                        <option value="In Progress" {% if order.status == 'In Progress' %}selected{% endif %}>In Progress</option>
+                                        <option value="Completed" {% if order.status == 'Completed' %}selected{% endif %}>Completed</option>
+                                    </select>
+                                    <button type="submit">Update</button>
+                                </form>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </section>
+        {% endif %}
+    </div>
+</body>
+</html>

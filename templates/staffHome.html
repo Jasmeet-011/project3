@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='staffHome.css') }}">
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>Welcome Home</h1>
+            <a class="logout" href="/logout">Logout</a>
+        </nav>
+    </header>
+    <div class="container">
+        <h1>Welcome, {{ username }}!</h1>
+        <p>Manage your tasks and explore reports below:</p>
+
+        <div class="grid-container">
+            <!-- Donate an Item -->
+            <div class="card">
+                <h3>Accept a Donated Item</h3>
+                <p>Accept donations.</p>
+                <button onclick="window.location.href='/checkDonor'">Accept Donation</button>
+            </div>
+
+            <!-- Find Item Locations -->
+            <div class="card">
+                <h3>Find Item Locations</h3>
+                <p>Locate specific items in storage.</p>
+                <form action="/findSingleItemResult" method="POST">
+                    <input type="text" id="itemID" name="itemID" placeholder="Enter Item ID" required>
+                    <input type="submit" value="Find Item">
+                </form>
+            </div>
+
+            <!-- Find Order Details -->
+            <div class="card">
+                <h3>Find Order Details</h3>
+                <p>Search for order details and history.</p>
+                <form action="/findOrderItemsResult" method="POST">
+                    <input type="text" id="orderID" name="orderID" placeholder="Enter Order ID" required>
+                    <input type="submit" value="Search">
+                </form>
+            </div>
+
+            <!-- View My Orders -->
+            <div class="card">
+                <h3>View My Orders</h3>
+                <p>Review all orders you’re associated with.</p>
+                <button onclick="window.location.href='/myOrders'">View Orders</button>
+            </div>
+
+            <!-- View Popular Categories -->
+            <div class="card">
+                <h3>Popular Categories</h3>
+                <p>Discover trending donation categories.</p>
+                <button onclick="window.location.href='/popularCategories'">Explore</button>
+            </div>
+
+            <!-- Year-End Report -->
+            <div class="card">
+                <h3>Year-End Report</h3>
+                <p>View detailed reports of yearly activity.</p>
+                <button onclick="window.location.href='/yearEndReport'">View Report</button>
+            </div>
+
+            <!-- Update Order Status -->
+            <div class="card">
+                <h3>Update Order Status</h3>
+                <p>Manage and update order delivery statuses.</p>
+                <button onclick="window.location.href='/updateOrderStatus'">Update Status</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

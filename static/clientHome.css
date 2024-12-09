@@ -1,0 +1,126 @@
+/* Header and Navigation */
+header {
+	background-color: #333;
+	color: white;
+	height: 80px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	padding: 0 20px;
+	position: relative; /* Positioning for centering */
+}
+
+header h1 {
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%); /* Center the text */
+	margin: 0;
+	font-size: 36px;
+}
+
+header .logout {
+	color: white;
+	text-decoration: none;
+	font-size: 16px;
+	margin-left: auto; /* Push to the right */
+}
+
+header .logout:hover {
+	text-decoration: underline;
+}
+
+
+/* Container and General Layout */
+body {
+	font-family: Arial, sans-serif;
+	background-color: #f4f4f4;
+	margin: 0;
+	padding: 0;
+}
+
+.container {
+	max-width: 800px;
+	margin: 20px auto;
+	padding: 20px;
+	background-color: white;
+	border-radius: 8px;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+	color: #333;
+	text-align: center;
+}
+
+.error {
+	color: red;
+	text-align: center;
+	font-weight: bold;
+	margin-bottom: 20px;
+}
+
+/* Action Card */
+.action-card {
+	background-color: #e9ecef;
+	border-radius: 8px;
+	padding: 15px;
+	margin: 10px 0;
+	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+.action-card h3 {
+	margin: 0 0 10px;
+	color: #333;
+}
+
+.action-card form label {
+	display: block;
+	margin-bottom: 5px;
+	color: #555;
+}
+
+.action-card input[type="text"] {
+	width: calc(100% - 20px);
+	padding: 10px;
+	margin: 10px 0;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+}
+
+.action-card input[type="submit"] {
+	background-color: #007bff;
+	color: white;
+	border: none;
+	padding: 10px 15px;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: background-color 0.3s;
+}
+
+.action-card input[type="submit"]:hover {
+	background-color: #0056b3;
+}
+
+/* Button Group */
+.button-group {
+	text-align: center;
+	margin-top: 20px;
+}
+
+.button-group button {
+	background-color: #28a745;
+	color: white;
+	border: none;
+	padding: 10px 15px;
+	border-radius: 5px;
+	margin: 5px 0;
+	cursor: pointer;
+	transition: background-color 0.3s;
+	width: 100%;
+}
+
+.button-group button:hover {
+	background-color: #218838;
+}

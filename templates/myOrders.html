@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Orders</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='myOrders.css') }}">
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>My Orders</h1>
+            <a class="logout" href="/logout">Logout</a>
+        </nav>
+    </header>
+    <div class="container">
+        <h2>Orders for {{ username }}</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Order ID</th>
+                    <th>Order Date</th>
+                    <th>Order Notes</th>
+                    <th>Volunteer</th>
+                    <th>Client</th>
+                    <th>Supervisor</th>
+                    <th>Status</th>
+                    <th>Delivery Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for order in orders %}
+                <tr>
+                    <td>{{ order.orderID }}</td>
+                    <td>{{ order.orderDate }}</td>
+                    <td>{{ order.orderNotes }}</td>
+                    <td>{{ order.volunteer if order.volunteer else 'N/A' }}</td>
+                    <td>{{ order.client_fname }} {{ order.client_lname }}</td>
+                    <td>{{ order.supervisor_fname }} {{ order.supervisor_lname }}</td>
+                    <td>{{ order.status if order.status else 'Pending' }}</td>
+                    <td>{{ order.deliveryDate if order.deliveryDate else 'N/A' }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

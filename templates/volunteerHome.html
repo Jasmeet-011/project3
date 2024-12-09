@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volunteer Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='volunteerHome.css') }}">
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>Volunteer Dashboard</h1>
+            <a class="logout" href="/logout">Logout</a>
+        </nav>
+    </header>
+    <div class="container">
+        <h1>Welcome, {{ username }}!</h1>
+        <p>Manage your deliveries and tasks below:</p>
+
+        <!-- Deliveries Section -->
+        <div class="card">
+            <h3>Assigned Deliveries</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Order ID</th>
+                        <th>Status</th>
+                        <th>Delivery Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for delivery in deliveries %}
+                    <tr>
+                        <td>{{ delivery.orderID }}</td>
+                        <td>{{ delivery.status }}</td>
+                        <td>{{ delivery.deliveryDate }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="grid-container">
+            <!-- Find Item Locations -->
+            <div class="card">
+                <h3>Find Item Locations</h3>
+                <form action="/findSingleItemResult" method="POST">
+                    <input type="text" id="itemID" name="itemID" placeholder="Enter Item ID" required>
+                    <input type="submit" value="Find Item">
+                </form>
+            </div>
+
+            <!-- Update Order Status -->
+            <div class="card">
+                <h3>Update Order Status</h3>
+                <p>Manage and update delivery statuses.</p>
+                <button onclick="window.location.href='/updateOrderStatus'">Update Status</button>
+            </div>
+
+            <!-- Track My Orders -->
+            <div class="card">
+                <h3>Track My Orders</h3>
+                <p>Review orders associated with your account.</p>
+                <button onclick="window.location.href='/myOrders'">Track Orders</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

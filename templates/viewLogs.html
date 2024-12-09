@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transaction Logs</title>
+</head>
+<body>
+    <h1>Transaction Logs</h1>
+    <table border="1">
+        <tr>
+            <th>Log ID</th>
+            <th>Username</th>
+            <th>Role</th>
+            <th>Action</th>
+            <th>Timestamp</th>
+        </tr>
+        {% for log in logs %}
+        <tr>
+            <td>{{ log.logID }}</td>
+            <td>{{ log.username }}</td>
+            <td>{{ log.role }}</td>
+            <td>{{ log.action }}</td>
+            <td>{{ log.timestamp }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="/home">Back to Dashboard</a>
+</body>
+</html>

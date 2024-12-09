@@ -1,0 +1,97 @@
+/* General Styling */
+body {
+	font-family: Arial, sans-serif;
+	background-color: #f4f4f4;
+	margin: 0;
+	padding: 0;
+}
+
+/* Header and Navigation */
+header {
+	background-color: #333;
+	color: white;
+	height: 80px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 20px;
+	position: relative;
+}
+
+header h1 {
+	margin: 0;
+	font-size: 28px;
+}
+
+header .logout {
+	color: white;
+	text-decoration: none;
+	font-size: 16px;
+}
+
+header .logout:hover {
+	text-decoration: underline;
+}
+
+/* Main Container */
+.container {
+	max-width: 1200px;
+	margin: 40px auto;
+	padding: 20px;
+	background-color: white;
+	border-radius: 10px;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.container h2 {
+	text-align: center;
+	color: #333;
+	margin-bottom: 20px;
+}
+
+/* Table Styling */
+table {
+	width: 100%;
+	border-collapse: collapse;
+	margin-top: 20px;
+}
+
+table thead {
+	background-color: #007bff;
+	color: white;
+}
+
+table th, table td {
+	border: 1px solid #ddd;
+	padding: 10px;
+	text-align: center;
+	font-size: 14px;
+}
+
+table tbody tr:nth-child(even) {
+	background-color: #f9f9f9;
+}
+
+table tbody tr:hover {
+	background-color: #f1f1f1;
+}
+
+table th {
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+table td {
+	color: #555;
+}
+
+/* Responsive Table */
+@media (max-width: 768px) {
+	table {
+			font-size: 12px;
+	}
+
+	header h1 {
+			font-size: 22px;
+	}
+}

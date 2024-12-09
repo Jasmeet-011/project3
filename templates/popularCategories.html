@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Popular Categories</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='popularCategories.css') }}">
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>Popular Categories</h1>
+            <a class="back" href="/home">Go Back</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h2>Find Top Categories and Subcategories</h2>
+        <form method="POST" action="/popularCategories">
+            <label for="start_date">Start Date:</label>
+            <input type="date" id="start_date" name="start_date" required>
+            <label for="end_date">End Date:</label>
+            <input type="date" id="end_date" name="end_date" required>
+            <button type="submit">Get Rankings</button>
+        </form>
+
+        <hr>
+
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% elif message %}
+            <p class="message">{{ message }}</p>
+        {% elif rankings %}
+            <h2>Top Categories/Subcategories</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Main Category</th>
+                        <th>Subcategory</th>
+                        <th>Number of Orders</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for rank, category in enumerate(rankings, 1) %}
+                    <tr>
+                        <td>{{ rank }}</td>
+                        <td>{{ category.mainCategory }}</td>
+                        <td>{{ category.subCategory }}</td>
+                        <td>{{ category.num_orders }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
+    </div>
+</body>
+</html>
